@@ -20,3 +20,5 @@ function langHello() {
             break;
     }
 }
+
+console.log(langHello());
