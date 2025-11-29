@@ -1,7 +1,7 @@
 const exchangeRate = {
     RUB: {
-        USD: 78.23,
-        EUR: 90.82
+        USD: 0.012783,
+        EUR: 0.011011
     },
     USD: {
         RUB: 78.23,
