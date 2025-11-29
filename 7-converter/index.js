@@ -22,7 +22,7 @@ function converter(sum, currencyFrom, currencyTo) {
         return null;
     }
 
-    return sum * exchangeRate[currencyFrom].currencyTo
+    return sum * exchangeRate[currencyFrom][currencyTo]
 }
 
 console.log(converter(1000, "USD", "EUR"))
