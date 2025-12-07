@@ -3,9 +3,9 @@ function luna(cardNumber) {
         throw new Error('Неверный формат карты')
     }
     
-    const cardSums = cardNumber.replace(/-/g,'').split('').reduce((acc, num, index) => {
+    const cardSums = cardNumber.replace(/-/g,'').split('').reverse().reduce((acc, num, index) => {
         const number = parseInt(num);
-        index % 2 === 0 ? acc.even + number : acc.odd + (number * 2 >= 10 ? number*2-9 : number*2);
+        index % 2 !== 0 ? acc.odd += (number * 2 >= 10 ? number*2-9 : number*2) : acc.even += number;
         return acc
     }, {even: 0, odd: 0})
 
