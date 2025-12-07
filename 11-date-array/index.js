@@ -12,7 +12,15 @@ function arrayDateClear(array) {
     })
     
     
-    return filteredDate.map(date => date.replace(/[.\/]/g, '-'))
+    return filteredDate.map(date => {
+        if (date.includes('/')) {
+            const [month, day, year] = date.split('/')
+
+            return [day,month,year].join('-')
+        }
+        
+        return date.replace(/[.\/]/g, '-')
+    })
 }
 
 console.log(arrayDateClear(dateArray))
