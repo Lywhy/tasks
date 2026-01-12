@@ -1,6 +1,3 @@
-/* Сделать приложение, которое в браузере выводит таймер реального времени, который показывает сколько осталось до нового года в формате:
-
-10 месяцев, 5 дней, 10 часов, 6 минут, 5 секунд */
 'use strict';
 
 const blockTimer = document.getElementById('timer')
@@ -19,5 +16,5 @@ function getTimeDateLeft(date) {
 }
 
 const intervalId = setInterval((message) => {
-    blockTimer.innerText = getTimeDateLeft(Number(new Date()) + 1);
+    blockTimer.innerText = getTimeDateLeft(new Date());
 }, 1000)
