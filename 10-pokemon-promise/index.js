@@ -7,7 +7,7 @@ function getPokeon(url) {
         fetch(url)
             .then(response => {
                 if (!response.ok) {
-                    reject();
+                    reject(`HTTP error: ${response.error}`);
                 }
                 return response.json();
             })
@@ -28,9 +28,11 @@ function getPokeon(url) {
                         console.log(ef.effect)
                     }
                 }
+                resolve();
             })
             .catch(error => console.error(`Error: ${error}`))
     })
+    return result;
 }
 
 getPokeon(url);
