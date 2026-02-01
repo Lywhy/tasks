@@ -7,5 +7,3 @@ export class Task {
         console.log(this.message);
     }
 }
-
-module.exports = Task;

@@ -7,5 +7,3 @@ export class User {
         this.task.run();
     }
 }
-
-module.exports = User;
