@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="buttons-container">
+        <button class="click-btn">Нажми меня</button>
+        <button class="click-btn">Нажми меня</button>
+        <button class="click-btn">Нажми меня</button>
+        <button class="click-btn">Нажми меня</button>
+        <button class="click-btn">Нажми меня</button>
+    </div>
+    
+    <div class="counter">Нажатий: <span id="counter">0</span></div>
+
+    <script>
+        const buttons = document.querySelectorAll('.click-btn');
+        const counterSpan = document.getElementById('counter');
+        let clickCount = 0;
+
+        buttons.forEach((button, index) => {
+            button.addEventListener('click', () => {
+                clickCount++;
+                counterSpan.textContent = clickCount;
+
+                buttons.forEach(btn => {
+                    btn.textContent = 'Нажми меня';
+                });
+
+                button.textContent = 'Нажата!';
+            });
+        });
+    </script>
+</body>
+</html>
