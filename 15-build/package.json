@@ -7,11 +7,12 @@
   "type": "commonjs",
   "main": "index.js",
   "scripts": {
-    "build": "rollup",
+    "build": "rollup -c",
+    "start": "live-server",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "dependencies": {
+    "live-server": "^1.2.0",
     "rollup": "^4.57.1"
-  },
-  "devDependencies": {}
+  }
 }
