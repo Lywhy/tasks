@@ -1,6 +1,8 @@
 {
   // Visit https://aka.ms/tsconfig to read more about this file
   "compilerOptions": {
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true,
     // File Layout
     // "rootDir": "./src",
     // "outDir": "./dist",
@@ -8,7 +10,7 @@
     // Environment Settings
     // See also https://aka.ms/tsconfig/module
     "module": "nodenext",
-    "target": "esnext",
+    "target": "ES2020", //"esnext",
     "types": [],
     // For nodejs:
     // "lib": ["esnext"],
