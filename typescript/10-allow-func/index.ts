@@ -1,14 +1,17 @@
-function allowFunc(validator: (value: any) => boolean) {
-    return function (target: any, propertyKey: string) {
-        let value: any = 0;
+function allowFunc<T>(validator: (value: T) => boolean): PropertyDecorator {
+    return (target: any, propertyKey: string | symbol) => {
+        const privateKey = `__${String(propertyKey)}_storage`;
         
-        Object.defineProperty(target, propertyKey, {
-            get() {
-                return value;
+        Object.defineProperty(target, propertyKey as any, {
+            get(this: any) {
+                if (!(privateKey in this)) {
+                    this[privateKey] = 30 as T;
+                }
+                return this[privateKey];
             },
-            set(newValue: any) {
+            set(this: any, newValue: T) {
                 if (validator(newValue)) {
-                    value = newValue;
+                    this[privateKey] = newValue;
                 }
             },
             enumerable: true,
@@ -19,15 +22,12 @@ function allowFunc(validator: (value: any) => boolean) {
 
 class User {
     @allowFunc((a: number) => a > 0)
-    age!: number;
+    age: number = 30;
 }
 
-// Тестирование
 const person = new User();
-console.log(person.age); // undefined (или 0 в зависимости от начального значения)
-
+console.log(person.age);
 person.age = 0;
-console.log(person.age); // undefined (0 не прошло валидацию)
-
+console.log(person.age);
 person.age = 20;
-console.log(person.age); // 20 ✅
+console.log(person.age);
